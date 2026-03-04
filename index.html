@@ -1,1425 +1,1457 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Hoang Anh - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a365d;
-            --primary-light: #2c5282;
-            --secondary: #c9a227;
-            --secondary-light: #d4b34e;
-            --accent: #744210;
-            --text-dark: #1a202c;
-            --text-light: #4a5568;
-            --text-muted: #718096;
-            --bg-light: #f7fafc;
-            --bg-white: #ffffff;
-            --bg-cream: #faf8f5;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background: var(--bg-cream);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .nav-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light) 100%);
-            padding-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content {
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 30px;
-            font-weight: 400;
-        }
-
-        .hero-roles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .hero-role {
-            background: var(--bg-white);
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 500;
-            border-left: 3px solid var(--secondary);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .hero-image {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--secondary);
-            border-radius: 20px;
-            z-index: -1;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-            background: var(--bg-white);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .about-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .info-item {
-            background: var(--bg-light);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .info-item label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .info-item span {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        /* Roles Section */
-        .roles {
-            padding: 100px 0;
-            background: var(--bg-light);
-        }
-
-        .roles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .role-card {
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .role-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--secondary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .role-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .role-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .role-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .role-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .role-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .role-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 100px 0;
-            background: var(--bg-white);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .project-card {
-            background: var(--bg-light);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 30px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .project-tag {
-            background: var(--secondary);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .project-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .project-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .project-roles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .project-role {
-            background: var(--bg-white);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            color: var(--primary);
-            border: 1px solid var(--border);
-        }
-
-        .project-outcome {
-            background: var(--bg-white);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 3px solid var(--primary);
-        }
-
-        .project-outcome strong {
-            color: var(--primary);
-            font-size: 0.85rem;
-        }
-
-        .project-outcome p {
-            font-size: 0.85rem;
-            margin: 5px 0 0 0;
-            color: var(--text-light);
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 100px 0;
-            background: var(--bg-light);
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        .skills-category h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .skills-category h3::before {
-            content: '';
-            width: 4px;
-            height: 25px;
-            background: var(--secondary);
-            border-radius: 2px;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .skill-item {
-            background: var(--bg-white);
-            padding: 18px 20px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            transform: translateX(5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--secondary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .skill-info h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin-bottom: 3px;
-        }
-
-        .skill-info p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Education Section */
-        .education {
-            padding: 100px 0;
-            background: var(--bg-white);
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .education-card {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary);
-        }
-
-        .education-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .education-card .institution {
-            color: var(--text-light);
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .education-card .year {
-            color: var(--secondary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .achievements {
-            list-style: none;
-        }
-
-        .achievements li {
-            padding: 8px 0;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .achievements li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-            font-weight: 700;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: var(--primary);
-            color: white;
-        }
-
-        .contact .section-header h2 {
-            color: white;
-        }
-
-        .contact .section-header p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
-
-        .contact-item span {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .contact-form {
-            background: var(--bg-white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--text-dark);
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .contact-form .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        footer p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content {
-                order: 2;
-            }
-
-            .hero-image {
-                order: 1;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-roles {
-                justify-content: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .roles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-                box-shadow: var(--shadow);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .about-info {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Le Hoang Anh — Cultural Consultant • IELTS Mentor • Literature & Research</title>
+  <meta name="description" content="Portfolio of Le Hoang Anh: Vietnamese Language & Cultural Consultant, IELTS & Academic English Mentor, Advanced Literature & Research Specialist." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Lê Hoàng Anh — Portfolio" />
+  <meta property="og:description" content="Vietnamese Language & Cultural Consultant • IELTS & Academic English Mentor • Advanced Literature & Research Specialist." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%235b5bd6' d='M32 2 58 16v32L32 62 6 48V16z'/%3E%3Cpath fill='%23fff' d='M20 44V20h6l6 10 6-10h6v24h-6V31l-6 10-6-10v13z'/%3E%3C/svg%3E" />
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --faint: rgba(255,255,255,.55);
+      --stroke: rgba(255,255,255,.14);
+      --accent: #8b5cf6;
+      --accent-2: #f59e0b;
+      --ok: #34d399;
+      --shadow: 0 18px 50px rgba(0,0,0,.40);
+      --radius: 18px;
+      --radius-sm: 14px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    }
+
+    /* Light theme */
+    [data-theme="light"]{
+      --bg: #f7f5ef;
+      --panel: rgba(20, 18, 32, .05);
+      --panel-2: rgba(20, 18, 32, .08);
+      --text: rgba(15, 14, 20, .92);
+      --muted: rgba(15, 14, 20, .72);
+      --faint: rgba(15, 14, 20, .55);
+      --stroke: rgba(15, 14, 20, .14);
+      --shadow: 0 18px 60px rgba(15,14,20,.10);
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(139,92,246,.25), transparent 60%),
+        radial-gradient(900px 600px at 95% 20%, rgba(245,158,11,.20), transparent 55%),
+        radial-gradient(900px 650px at 60% 90%, rgba(52,211,153,.14), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .skip{
+      position:absolute; left:-9999px; top:8px;
+      background: var(--panel-2); border: 1px solid var(--stroke);
+      padding: 10px 12px; border-radius: 12px;
+    }
+    .skip:focus{ left: 12px; z-index: 9999; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px; }
+
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(11,16,32,.85), rgba(11,16,32,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    [data-theme="light"] header{
+      background: linear-gradient(to bottom, rgba(247,245,239,.92), rgba(247,245,239,.60));
+      border-bottom: 1px solid rgba(15,14,20,.08);
+    }
+
+    .nav{
+      display:flex; align-items:center; justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand{ display:flex; align-items:center; gap: 12px; min-width: 220px; }
+    .logo{
+      width: 40px; height: 40px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(245,158,11,.85));
+      box-shadow: 0 10px 30px rgba(139,92,246,.22);
+      border: 1px solid rgba(255,255,255,.18);
+      display:grid; place-items:center;
+      color: white;
+      font-family: var(--serif);
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .brand .name{ font-weight: 800; letter-spacing: .2px; }
+    .brand .tag{ color: var(--muted); font-size: 13px; }
+
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; align-items:center; gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{
+      padding: 8px 10px; border-radius: 12px;
+      color: var(--muted);
+    }
+    nav a:hover{
+      color: var(--text);
+      background: var(--panel);
+      text-decoration: none;
+    }
+
+    .controls{ display:flex; align-items:center; gap: 10px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 650;
+      transition: transform .12s ease, background .12s ease;
+      user-select:none;
+    }
+    .btn:hover{ background: var(--panel-2); text-decoration: none; }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn.primary{
+      border-color: rgba(139,92,246,.45);
+      background: linear-gradient(135deg, rgba(139,92,246,.35), rgba(245,158,11,.18));
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .hero{ padding: 34px 0 22px; }
+    .grid-hero{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 980px){
+      .grid-hero{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
+    }
+
+    .card{
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    [data-theme="light"] .card{ background: rgba(255,255,255,.70); }
+    .card.pad{ padding: 20px; }
+
+    h1{
+      font-size: clamp(28px, 4.0vw, 44px);
+      line-height: 1.10;
+      margin: 6px 0 12px;
+      letter-spacing: -.4px;
+    }
+    .lead{ font-size: 16.5px; color: var(--muted); margin: 0 0 16px; }
+
+    .kpi{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 16px;
+    }
+    @media (max-width: 650px){ .kpi{ grid-template-columns: 1fr; } }
+    .kpi .item{
+      padding: 14px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+    }
+    .kpi .big{ font-weight: 900; font-size: 18px; }
+    .kpi .small{ color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+    .side{ display:flex; flex-direction: column; gap: 12px; height: 100%; }
+
+    .quote{
+      position: relative;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+    .quote p{ margin: 0; color: var(--muted); }
+    .quote .mark{
+      font-family: var(--serif);
+      font-size: 44px;
+      opacity: .22;
+      position:absolute; top: -10px; right: 14px;
+    }
+
+    .mini{
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+    }
+    .mini h3{ margin: 0 0 10px; font-size: 14px; letter-spacing: .2px; color: var(--faint); text-transform: uppercase; }
+    .mini .row{ display:flex; gap: 10px; flex-wrap: wrap; }
+    .mini a{ text-decoration: none; }
+    .mini a:hover{ text-decoration: underline; }
+
+    section{ padding: 22px 0; }
+    .section-title{
+      display:flex; align-items: baseline; justify-content: space-between;
+      gap: 14px;
+      margin: 0 0 12px;
+    }
+    h2{ margin: 0; font-size: 20px; letter-spacing: .2px; }
+    .section-note{ color: var(--muted); font-size: 14px; margin: 0; }
+
+    .cols{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 900px){ .cols{ grid-template-columns: 1fr; } }
+
+    .role{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+    }
+    .role h3{ margin: 0 0 8px; font-size: 16px; }
+    .role p{ margin: 0; color: var(--muted); }
+    .role .tags{ margin-top: 12px; display:flex; flex-wrap:wrap; gap: 8px; }
+
+    .tag{
+      display:inline-flex; align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .projects-head{
+      display:flex; align-items:center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .filters{ display:flex; gap: 8px; flex-wrap: wrap; }
+    .filter{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+      color: var(--muted);
+      cursor:pointer;
+      font-weight: 650;
+      font-size: 13px;
+    }
+    .filter[aria-pressed="true"]{
+      color: var(--text);
+      border-color: rgba(139,92,246,.55);
+      background: linear-gradient(135deg, rgba(139,92,246,.25), rgba(245,158,11,.12));
+    }
+
+    .grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
+
+    .project{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+    }
+    [data-theme="light"] .project{ background: rgba(255,255,255,.65); }
+    .project h3{ margin: 0 0 8px; font-size: 16px; }
+    .project p{ margin: 0 0 12px; color: var(--muted); }
+    .project .meta{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 10px; }
+
+    .list{ margin: 10px 0 0; padding: 0; list-style:none; }
+    .list li{
+      display:flex; gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    [data-theme="light"] .list li{ border-top: 1px solid rgba(15,14,20,.08); }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      flex: 0 0 10px;
+    }
+    .li-title{ font-weight: 750; }
+    .li-body{ color: var(--muted); margin-top: 2px; }
+
+    .two{ display:grid; grid-template-columns: 1.1fr .9fr; gap: 14px; align-items: start; }
+    @media (max-width: 980px){ .two{ grid-template-columns: 1fr; } }
+
+    .resume-block{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+    }
+    .resume-block h3{ margin: 0 0 10px; font-size: 16px; }
+    .resume-block p{ margin: 0; color: var(--muted); }
+    .resume-block .small{ margin-top: 8px; font-size: 14px; color: var(--faint); }
+
+    .contact{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 900px){ .contact{ grid-template-columns: 1fr; } }
+
+    label{ display:block; font-weight: 700; margin-bottom: 6px; }
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+    }
+    [data-theme="light"] input, [data-theme="light"] textarea{ background: rgba(255,255,255,.75); }
+    textarea{ min-height: 120px; resize: vertical; }
+
+    .hint{ font-size: 13px; color: var(--muted); margin-top: 8px; }
+    .toast{
+      position: fixed;
+      bottom: 18px; left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.65);
+      color: white;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+      font-size: 13px;
+    }
+    [data-theme="light"] .toast{ background: rgba(15,14,20,.82); }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-2px); }
+
+    footer{ padding: 18px 0 32px; color: var(--muted); font-size: 13px; }
+    .foot{
+      display:flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 16px;
+    }
+    [data-theme="light"] .foot{ border-top: 1px solid rgba(15,14,20,.10); }
+    .mono{ font-family: var(--mono); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lê Hoàng Anh",
+    "jobTitle": [
+      "Vietnamese Language & Cultural Consultant",
+      "IELTS & Academic English Mentor",
+      "Advanced Literature & Research Specialist"
+    ],
+    "knowsLanguage": ["Vietnamese", "English"],
+    "email": "mailto:lehoanganh1318@gmail.com",
+    "telephone": "tel:+84773121811"
+  }
+  </script>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="#" class="logo">N.T. Hoang Anh</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#roles">Roles</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand" aria-label="Site brand">
+          <div class="logo" aria-hidden="true">A</div>
+          <div>
+            <div class="name">Lê Hoàng Anh</div>
+            <div class="tag" data-i18n="brandTag">Culture • Academic English • Literature Research</div>
+          </div>
+        </div>
+
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="#about" data-i18n="navAbout">About</a></li>
+            <li><a href="#roles" data-i18n="navRoles">Roles</a></li>
+            <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+            <li><a href="#research" data-i18n="navResearch">Research</a></li>
+            <li><a href="#services" data-i18n="navServices">Services</a></li>
+            <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="controls">
+          <button id="langBtn" class="btn" type="button" aria-label="Toggle language">
+            <span aria-hidden="true">🌐</span>
+            <span class="mono" style="font-size:12px;" id="langLabel">EN</span>
+          </button>
+          <button id="themeBtn" class="btn" type="button" aria-label="Toggle theme">
+            <span aria-hidden="true">◐</span>
+            <span class="mono" style="font-size:12px;" data-i18n="theme">Theme</span>
+          </button>
+          <a class="btn primary" href="#contact" data-i18n="ctaWork">Work with me</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero" aria-label="Hero">
+      <div class="grid-hero">
+        <div class="card pad">
+          <span class="pill"><span aria-hidden="true">✦</span> <span data-i18n="heroPill">Interdisciplinary bridge: Vietnam ↔ Global academia</span></span>
+          <h1 data-i18n="heroH1">Vietnamese culture, academic English, and literature—woven into practical outcomes.</h1>
+
+          <p class="lead" data-i18n="heroLead">
+            I work across three roles at once: Vietnamese Language & Cultural Consultant, IELTS & Academic English Mentor, and Advanced Literature & Research Specialist.
+            My focus is helping people communicate with precision, cultural fluency, and scholarly rigor.
+          </p>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px;">
+            <a class="btn" href="#projects" data-i18n="heroExplore">Explore projects</a>
+            <button class="btn" id="copyEmailBtn" type="button">
+              <span data-i18n="copyEmail">Copy email</span> <span class="mono" style="opacity:.8;">lehoanganh1318@gmail.com</span>
             </button>
-        </div>
-    </nav>
+            <a class="btn" href="#services" data-i18n="heroRequest">Request a session</a>
+          </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">PORTFOLIO 2025</span>
-                <h1>Le<br>Hoang Anh</h1>
-                <p class="hero-subtitle">Bridging Vietnamese Culture with Global Academic Communities Through Language, Literature & Research</p>
-                <div class="hero-roles">
-                    <span class="hero-role">📚 Vietnamese Language & Cultural Consultant</span>
-                    <span class="hero-role">🎓 IELTS & Academic English Mentor</span>
-                    <span class="hero-role">✍️ Advanced Literature & Research Specialist</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
+          <div class="kpi" aria-label="Highlights">
+            <div class="item">
+              <div class="big">IELTS 8.0</div>
+              <div class="small" data-i18n="kpi1">Credentialed English proficiency</div>
             </div>
-            <div class="hero-image">
-                <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/18b5bb94d-ccf3-4687-b714-69fc34529aed.png" alt="Professional Workspace">
+            <div class="item">
+              <div class="big" data-i18n="kpi2Big">Teaching + editing</div>
+              <div class="small" data-i18n="kpi2">English, literature, IELTS, Vietnamese for foreigners</div>
             </div>
+            <div class="item">
+              <div class="big" data-i18n="kpi3Big">Research-ready</div>
+              <div class="small" data-i18n="kpi3">Literary analysis, theory, fact-checking</div>
+            </div>
+          </div>
         </div>
+
+        <div class="side">
+          <div class="quote card">
+            <div class="mark" aria-hidden="true">“</div>
+            <p data-i18n="quote">
+              I design work that is both scholarly and usable: workshops, edited manuscripts, translations,
+              and research-informed cultural training.
+            </p>
+          </div>
+
+          <!-- <div class="mini card"> -->
+            <!-- <h3 data-i18n="quickLinks">Quick links</h3> -->
+            <!-- <div class="row"> -->
+              <!-- <a class="pill" href="#" title="">LinkedIn</a> -->
+              <!-- <a class="pill" href="#" title="">Google Scholar</a> -->
+              <!-- <a class="pill" href="#" title="">ORCID</a> -->
+              <!-- <a class="pill" href="#" title="" data-i18n="portfolioPdf">Portfolio PDF</a> -->
+            <!-- </div> -->
+          <!-- </div> -->
+
+          <div class="mini card">
+            <h3 data-i18n="availability">Availability</h3>
+            <div class="row">
+              <span class="pill"><span aria-hidden="true">●</span> <span data-i18n="availRemote">Remote</span></span>
+              <span class="pill"><span aria-hidden="true">●</span> <span data-i18n="availVN">Vietnam-focused</span></span>
+              <span class="pill"><span aria-hidden="true">●</span> <span data-i18n="availAA">Academic + professional</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>About Me</h2>
-                <p>Passionate about language, literature, and creative expression</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text animate-on-scroll">
-                    <h3>Building Bridges Through Language & Culture</h3>
-                    <p>With a deep passion for language, literature, and creativity, I apply my writing, editing, and information management skills to support effective communication, spread positive values, and serve the community with compassion, dedication, and humility.</p>
-                    <p>I aim to become a trusted partner for leadership, supporting the effective organization of administrative activities, events, and training programs that connect communities. I aspire to contribute my language abilities, organizational thinking, and creativity to build a humane, effective, and inspiring work environment.</p>
-                    <p>My work is guided by core values of responsibility, carefulness, proactiveness, and dedication, always striving to serve the community and spread love and compassion.</p>
-                </div>
-                <div class="about-info animate-on-scroll">
-                    <div class="info-item">
-                        <label>Location</label>
-                        <span>Ho Chi Minh City, Vietnam</span>
-                    </div>
-                    <div class="info-item">
-                        <label>Email</label>
-                        <span>lehoanganh1318@gmail.com</span>
-                    </div>
-                    <div class="info-item">
-                        <label>Phone</label>
-                        <span>+84 77 312 1811</span>
-                    </div>
-                    <div class="info-item">
-                        <label>Experience</label>
-                        <span>5+ Years</span>
-                    </div>
-                </div>
-            </div>
+    <section id="about" aria-label="About">
+      <div class="section-title">
+        <h2 data-i18n="aboutTitle">About</h2>
+      </div>
+
+      <div class="two">
+        <div class="card pad">
+          <p class="lead" style="margin-bottom: 10px;" data-i18n="aboutLead">
+            I’m an English-language student with strong experience in teaching and language editing, and I specialise in
+            Vietnamese–English translation/interpretation, comparative linguistics, and research-based writing.
+          </p>
+
+          <ul class="list" aria-label="What I do">
+            <li>
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div class="li-title" data-i18n="aboutB1T">Cultural clarity</div>
+                <div class="li-body" data-i18n="aboutB1D">Make Vietnamese cultural contexts legible to international teams—without flattening nuance.</div>
+              </div>
+            </li>
+            <li>
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div class="li-title" data-i18n="aboutB2T">Academic English that sounds like you</div>
+                <div class="li-body" data-i18n="aboutB2D">Mentor writers toward clear arguments, strong structure, and accurate academic tone.</div>
+              </div>
+            </li>
+            <li>
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div class="li-title" data-i18n="aboutB3T">Literature + theory</div>
+                <div class="li-body" data-i18n="aboutB3D">Apply close reading, contemporary theory, and careful citation practice to research outputs.</div>
+              </div>
+            </li>
+          </ul>
         </div>
+
+        <div class="resume-block card">
+          <h3 data-i18n="coreProfile">Core profile</h3>
+          <p><span class="mono" data-i18n="nameLabel">Name:</span> Lê Hoàng Anh</p>
+          <p><span class="mono" data-i18n="emailLabel">Email:</span> <a href="mailto:lehoanganh1318@gmail.com">lehoanganh1318@gmail.com</a></p>
+          <p><span class="mono" data-i18n="phoneLabel">Phone:</span> <a href="tel:+84773121811">+84 77 312 1811</a></p>
+
+
+          <div style="height: 12px;"></div>
+          <h3 data-i18n="toolsTitle">Tools</h3>
+          <p data-i18n="toolsBody">Microsoft Office Specialist: Word 2019, Excel 2019 • Google Drive • Canva • CapCut</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Roles Section -->
-    <section class="roles" id="roles">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>My Three Roles</h2>
-                <p>Interdisciplinary expertise creating unique value</p>
-            </div>
-            <div class="roles-grid">
-                <div class="role-card animate-on-scroll">
-                    <div class="role-icon">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/1556d4d10-1c71-4d42-962c-91834b0be3e3.png" alt="Vietnamese Language Consultant">
-                    </div>
-                    <h3>Vietnamese Language & Cultural Consultant</h3>
-                    <p>Curating and translating cultural analyses, folklore, and contemporary Vietnamese literature. Designing modules on Vietnamese customs, business etiquette, and language use in professional settings.</p>
-                </div>
-                <div class="role-card animate-on-scroll">
-                    <div class="role-icon">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/1ad6844f5-b377-4df0-86f3-a318c4a154e5.png" alt="IELTS Mentor">
-                    </div>
-                    <h3>IELTS & Academic English Mentor</h3>
-                    <p>Offering workshops for Vietnamese researchers on writing academic papers in English. Creating materials for expatriates and Vietnamese professionals to improve English for international collaboration.</p>
-                </div>
-                <div class="role-card animate-on-scroll">
-                    <div class="role-icon">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/1128200a1-13ac-49a4-8130-30d0968faf40.png" alt="Research Specialist">
-                    </div>
-                    <h3>Advanced Literature & Research Specialist</h3>
-                    <p>Conducting original research on Vietnamese literary trends, post-colonial studies, and comparative literature. Publishing findings in academic journals and presenting at conferences.</p>
-                </div>
-            </div>
+    <section id="roles" aria-label="Roles">
+      <div class="section-title">
+        <h2 data-i18n="rolesTitle">My three roles</h2>
+        <p class="section-note" data-i18n="rolesNote">One identity, three lenses—designed to reinforce each other.</p>
+      </div>
+
+      <div class="cols">
+        <div class="role">
+          <h3 data-i18n="r1T">Vietnamese Language & Cultural Consultant</h3>
+          <p data-i18n="r1D">
+            I help international partners and Vietnamese professionals communicate across cultural expectations—through language nuance,
+            etiquette, and context-rich interpretation.
+          </p>
+          <div class="tags">
+            <span class="tag" data-i18n="tagC1">Cultural context</span>
+            <span class="tag" data-i18n="tagC2">Vietnamese for foreigners</span>
+            <span class="tag" data-i18n="tagC3">Interpreting support</span>
+            <span class="tag" data-i18n="tagC4">Cross-cultural communication</span>
+          </div>
         </div>
+
+        <div class="role">
+          <h3 data-i18n="r2T">IELTS & Academic English Mentor</h3>
+          <p data-i18n="r2D">
+            I mentor learners and researchers toward higher performance and clearer writing—IELTS strategies, academic style, argumentation,
+            and careful editing.
+          </p>
+          <div class="tags">
+            <span class="tag">IELTS (8.0)</span>
+            <span class="tag" data-i18n="tagE2">Academic writing</span>
+            <span class="tag" data-i18n="tagE3">Editing & proofreading</span>
+            <span class="tag" data-i18n="tagE4">Workshops</span>
+          </div>
+        </div>
+
+        <div class="role">
+          <h3 data-i18n="r3T">Advanced Literature & Research Specialist</h3>
+          <p data-i18n="r3D">
+            My research practice combines close reading, comparative approaches, and theory (including gender and identity frameworks) to produce
+            publishable, well-evidenced analysis.
+          </p>
+          <div class="tags">
+            <span class="tag" data-i18n="tagR1">Literary analysis</span>
+            <span class="tag" data-i18n="tagR2">Comparative linguistics</span>
+            <span class="tag" data-i18n="tagR3">Fact-checking</span>
+            <span class="tag" data-i18n="tagR4">Conference writing</span>
+          </div>
+        </div>
+
+        <div class="role">
+          <h3 data-i18n="r4T">How they intersect</h3>
+          <p data-i18n="r4D">
+            I use literature to teach language, and research to inform cultural consulting—so each deliverable is both intellectually grounded and
+            practically useful.
+          </p>
+          <div class="tags">
+            <span class="tag" data-i18n="tagX1">Interdisciplinary design</span>
+            <span class="tag" data-i18n="tagX2">Global relevance</span>
+            <span class="tag" data-i18n="tagX3">Tangible outcomes</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Featured Projects</h2>
-                <p>Showcasing the intersection of my three professional roles</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/187de33b8-a860-4c28-83d9-518cab5bb123.png" alt="Academic Journal">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Publication</span>
-                            <span class="project-tag">Research</span>
-                        </div>
-                        <h3>Bilingual Academic Journal for Vietnamese Studies</h3>
-                        <p>Launch an open-access, peer-reviewed journal focused on Vietnamese literature, culture, and linguistics, with articles published in both Vietnamese and English.</p>
-                        <div class="project-roles">
-                            <span class="project-role">📚 Cultural Consultant</span>
-                            <span class="project-role">🎓 English Mentor</span>
-                            <span class="project-role">✍️ Research Specialist</span>
-                        </div>
-                        <div class="project-outcome">
-                            <strong>Outcome:</strong>
-                            <p>A reputable platform for scholars, students, and cultural enthusiasts, positioning as a bridge between Vietnamese and global academic communities.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/1d8af9fe5-c0c3-4b4a-ae5c-526a53d0f8d1.png" alt="Cultural Training">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Training</span>
-                            <span class="project-tag">Consulting</span>
-                        </div>
-                        <h3>Cultural Competency Training for International Organizations</h3>
-                        <p>Develop a training program for NGOs, businesses, or educational institutions operating in Vietnam, focusing on cultural sensitivity, language nuances, and effective communication.</p>
-                        <div class="project-roles">
-                            <span class="project-role">📚 Cultural Consultant</span>
-                            <span class="project-role">🎓 English Mentor</span>
-                            <span class="project-role">✍️ Research Specialist</span>
-                        </div>
-                        <div class="project-outcome">
-                            <strong>Outcome:</strong>
-                            <p>A marketable training program that enhances cross-cultural collaboration and communication skills.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/18212bf65-6e3a-4545-918b-5ffa9ff9b810.png" alt="Literature Anthology">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Publication</span>
-                            <span class="project-tag">Translation</span>
-                        </div>
-                        <h3>Vietnamese Literature in English Translation Anthology</h3>
-                        <p>Compile and publish an anthology of Vietnamese short stories, poems, or essays translated into English, with annotations and academic commentary.</p>
-                        <div class="project-roles">
-                            <span class="project-role">📚 Cultural Consultant</span>
-                            <span class="project-role">🎓 English Mentor</span>
-                            <span class="project-role">✍️ Research Specialist</span>
-                        </div>
-                        <div class="project-outcome">
-                            <strong>Outcome:</strong>
-                            <p>A valuable resource for educators, students, and literature enthusiasts, demonstrating expertise in all three roles.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/17688cf4c-03d2-49d3-914a-f3532717241b.png" alt="Online Platform">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Digital</span>
-                            <span class="project-tag">Community</span>
-                        </div>
-                        <h3>Online Platform for Vietnamese-English Academic Collaboration</h3>
-                        <p>Create a digital hub where Vietnamese and international academics, students, and professionals can collaborate on research, language exchange, and cultural projects.</p>
-                        <div class="project-roles">
-                            <span class="project-role">📚 Cultural Consultant</span>
-                            <span class="project-role">🎓 English Mentor</span>
-                            <span class="project-role">✍️ Research Specialist</span>
-                        </div>
-                        <div class="project-outcome">
-                            <strong>Outcome:</strong>
-                            <p>A dynamic, interactive community that fosters global academic and cultural exchange.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/187de33b8-a860-4c28-83d9-518cab5bb123.png" alt="Research Project">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Research</span>
-                            <span class="project-tag">Academic</span>
-                        </div>
-                        <h3>Research: "The Influence of Vietnamese Folklore on Modern Literature"</h3>
-                        <p>In-depth research exploring how Vietnamese folklore and oral traditions have shaped contemporary Vietnamese literature, with focus on works available in English translation.</p>
-                        <div class="project-roles">
-                            <span class="project-role">📚 Cultural Consultant</span>
-                            <span class="project-role">🎓 English Mentor</span>
-                            <span class="project-role">✍️ Research Specialist</span>
-                        </div>
-                        <div class="project-outcome">
-                            <strong>Outcome:</strong>
-                            <p>A scholarly contribution to Vietnamese literary studies, combined with practical resources for language learners and educators.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/b428214f-8a40-40fd-8f61-d5e2ecf4102f/1d8af9fe5-c0c3-4b4a-ae5c-526a53d0f8d1.png" alt="Podcast Series">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Media</span>
-                            <span class="project-tag">Education</span>
-                        </div>
-                        <h3>Podcast/YouTube Series: "Vietnamese Voices in English"</h3>
-                        <p>Produce a multimedia series featuring interviews with Vietnamese authors, scholars, and professionals who work in English, discussing their experiences, challenges, and insights.</p>
-                        <div class="project-roles">
-                            <span class="project-role">📚 Cultural Consultant</span>
-                            <span class="project-role">🎓 English Mentor</span>
-                            <span class="project-role">✍️ Research Specialist</span>
-                        </div>
-                        <div class="project-outcome">
-                            <strong>Outcome:</strong>
-                            <p>A widely accessible resource that builds cultural understanding, supports language learners, and contributes to academic discourse.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="projects" aria-label="Projects">
+      <div class="projects-head">
+        <div class="section-title" style="margin:0;">
+          <h2 data-i18n="projectsTitle">Signature projects</h2>
         </div>
+
+        <div class="filters" role="group" aria-label="Project filters">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">All</button>
+          <button class="filter" type="button" data-filter="consulting" aria-pressed="false" data-i18n="filterConsulting">Consulting</button>
+          <button class="filter" type="button" data-filter="ielts" aria-pressed="false" data-i18n="filterIELTS">IELTS/Academic English</button>
+          <button class="filter" type="button" data-filter="research" aria-pressed="false" data-i18n="filterResearch">Research/Literature</button>
+        </div>
+      </div>
+
+      <div class="grid" id="projectGrid">
+        <article class="project" data-tags="research consulting ielts">
+          <h3 data-i18n="p1T">Bilingual Academic Journal for Vietnamese Studies</h3>
+          <p data-i18n="p1D">Launch an open-access, peer-reviewed journal on Vietnamese literature, culture, and linguistics—publishing in Vietnamese and English.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="pTagOA">Open access</span><span class="tag" data-i18n="pTagPR">Peer review</span><span class="tag" data-i18n="pTagVNEN">VN ↔ EN</span>
+          </div>
+          <ul class="list" style="margin-top:12px;">
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pConsulting">Consulting</div><div class="li-body" data-i18n="p1C">Curate and translate cultural analysis, folklore, and contemporary works.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pMentoring">Mentoring</div><div class="li-body" data-i18n="p1M">Run academic English workshops for Vietnamese researchers; edit submissions.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pResearch">Research</div><div class="li-body" data-i18n="p1R">Publish original work (post-colonial, comparative literature, modern trends).</div></div></li>
+          </ul>
+        </article>
+
+        <article class="project" data-tags="consulting ielts research">
+          <h3 data-i18n="p2T">Cultural Competency Training for International Organizations</h3>
+          <p data-i18n="p2D">A training program for NGOs, businesses, and institutions working in Vietnam—cultural sensitivity, language nuance, and communication.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="pTagWM">Workplace modules</span><span class="tag" data-i18n="pTagCS">Case studies</span><span class="tag" data-i18n="pTagComm">Communication</span>
+          </div>
+          <ul class="list" style="margin-top:12px;">
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pConsulting">Consulting</div><div class="li-body" data-i18n="p2C">Customs, business etiquette, Vietnamese language use in professional contexts.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pMentoring">Mentoring</div><div class="li-body" data-i18n="p2M">English materials + IELTS-style diagnostics tailored to workplace collaboration.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pResearch">Research</div><div class="li-body" data-i18n="p2R">Literary/historical examples to explain cross-cultural friction points.</div></div></li>
+          </ul>
+        </article>
+
+        <article class="project" data-tags="research consulting ielts">
+          <h3 data-i18n="p3T">Vietnamese Literature in English Translation Anthology</h3>
+          <p data-i18n="p3D">Compile an annotated anthology of Vietnamese short stories, poems, or essays in English translation, with academic commentary.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="pTagTrans">Translation</span><span class="tag" data-i18n="pTagAnno">Annotations</span><span class="tag" data-i18n="pTagTeach">Teaching tool</span>
+          </div>
+          <ul class="list" style="margin-top:12px;">
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pConsulting">Consulting</div><div class="li-body" data-i18n="p3C">Select culturally diverse works; ensure sensitive, accurate translation.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pMentoring">Mentoring</div><div class="li-body" data-i18n="p3M">Use the anthology for advanced English learning: analysis, vocabulary, style.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pResearch">Research</div><div class="li-body" data-i18n="p3R">Write contextual essays linking Vietnamese literary history to global frames.</div></div></li>
+          </ul>
+        </article>
+
+        <article class="project" data-tags="consulting ielts research">
+          <h3 data-i18n="p4T">Online Platform for Vietnamese–English Academic Collaboration</h3>
+          <p data-i18n="p4D">Create a digital hub where Vietnamese and international academics and students collaborate on research, language exchange, and culture.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="pTagCommunity">Community</span><span class="tag" data-i18n="pTagWorkshops">Workshops</span><span class="tag" data-i18n="pTagDH">Digital humanities</span>
+          </div>
+          <ul class="list" style="margin-top:12px;">
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pConsulting">Consulting</div><div class="li-body" data-i18n="p4C">Moderate discussions; provide cultural context and language support.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pMentoring">Mentoring</div><div class="li-body" data-i18n="p4M">Live Q&A, writing workshops, IELTS tips for study-abroad pathways.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pResearch">Research</div><div class="li-body" data-i18n="p4R">Lead comparative studies and publish findings on the platform.</div></div></li>
+          </ul>
+        </article>
+
+        <article class="project" data-tags="research consulting ielts">
+          <h3 data-i18n="p5T">Research: “The Influence of Vietnamese Folklore on Modern Literature”</h3>
+          <p data-i18n="p5D">A research program linking folklore and oral traditions to contemporary Vietnamese literature—especially texts available in English.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="pTagFolklore">Folklore</span><span class="tag" data-i18n="pTagModern">Modern literature</span><span class="tag" data-i18n="pTagPublic">Public scholarship</span>
+          </div>
+          <ul class="list" style="margin-top:12px;">
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pConsulting">Consulting</div><div class="li-body" data-i18n="p5C">Interviews, oral histories, and cultural theme analysis with authors.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pMentoring">Mentoring</div><div class="li-body" data-i18n="p5M">Lesson plans and presentations using excerpts to teach advanced English analysis.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pResearch">Research</div><div class="li-body" data-i18n="p5R">Conference papers, journal articles, and a public-facing summary (blog/podcast).</div></div></li>
+          </ul>
+        </article>
+
+        <article class="project" data-tags="consulting ielts research">
+          <h3 data-i18n="p6T">Podcast/YouTube: “Vietnamese Voices in English”</h3>
+          <p data-i18n="p6D">Interviews with Vietnamese authors, scholars, and professionals who work in English—identity, barriers, and global reception.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="pTagMedia">Media</span><span class="tag" data-i18n="pTagDiaspora">Diaspora</span><span class="tag" data-i18n="pTagTips">Academic tips</span>
+          </div>
+          <ul class="list" style="margin-top:12px;">
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pConsulting">Consulting</div><div class="li-body" data-i18n="p6C">Guide conversations on cultural identity and translating ideas across languages.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pMentoring">Mentoring</div><div class="li-body" data-i18n="p6M">Segments on academic English, common errors, and international communication.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="pResearch">Research</div><div class="li-body" data-i18n="p6R">Themes: post-colonialism, diaspora writing, and global literary circulation.</div></div></li>
+          </ul>
+        </article>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Professional Skills</h2>
-                <p>Core competencies and supporting abilities</p>
-            </div>
-            <div class="skills-container">
-                <div class="skills-category animate-on-scroll">
-                    <h3>Core Skills</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-icon">✍️</div>
-                            <div class="skill-info">
-                                <h4>Creative Writing & Editing</h4>
-                                <p>Editing & Proofreading expertise</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">🌐</div>
-                            <div class="skill-info">
-                                <h4>Translation & Interpretation</h4>
-                                <p>English-Vietnamese, Vietnamese-English</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">📊</div>
-                            <div class="skill-info">
-                                <h4>Comparative Linguistics</h4>
-                                <p>Language structure analysis</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">🔍</div>
-                            <div class="skill-info">
-                                <h4>Research & Fact-checking</h4>
-                                <p>Information collection & analysis</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">📁</div>
-                            <div class="skill-info">
-                                <h4>Information Management</h4>
-                                <p>Organize, store & process data</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category animate-on-scroll">
-                    <h3>Supporting Skills</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-icon">🎨</div>
-                            <div class="skill-info">
-                                <h4>Image & Video Editing</h4>
-                                <p>Canva, CapCut proficiency</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">💡</div>
-                            <div class="skill-info">
-                                <h4>Critical & Creative Thinking</h4>
-                                <p>Multi-perspective analysis</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon"></div>
-                            <div class="skill-info">
-                                <h4>Active Listening & Empathy</h4>
-                                <p>Understanding needs effectively</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">🎯</div>
-                            <div class="skill-info">
-                                <h4>High Concentration</h4>
-                                <p>Detail-oriented work capability</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon"></div>
-                            <div class="skill-info">
-                                <h4>Self-directed Learning</h4>
-                                <p>Independent research ability</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="research" aria-label="Research and writing">
+      <div class="section-title">
+        <h2 data-i18n="researchTitle">Research & writing</h2>
+        <p class="section-note" data-i18n="researchNote">Selected topics from conference-style and academic writing.</p>
+      </div>
+
+      <div class="cols">
+        <div class="card pad">
+          <h3 style="margin:0 0 10px;" data-i18n="researchDirTitle">Selected research directions</h3>
+          <ul class="list">
+            <li>
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div class="li-title" data-i18n="rd1T">Religious symbolism & identity</div>
+                <div class="li-body" data-i18n="rd1D">Textual analysis of symbolism and personal development narratives in modern literature.</div>
+              </div>
+            </li>
+            <li>
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div class="li-title" data-i18n="rd2T">Gender performativity & representation</div>
+                <div class="li-body" data-i18n="rd2D">Literary readings informed by Judith Butler’s framework to interpret character performance and identity.</div>
+              </div>
+            </li>
+            <li>
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div class="li-title" data-i18n="rd3T">Desire in contemporary Vietnamese literature</div>
+                <div class="li-body" data-i18n="rd3D">Researching voice, intimacy, and modern expression through Vietnamese texts and authors.</div>
+              </div>
+            </li>
+          </ul>
+          <p class="hint" data-i18n="researchHint">Replace these with exact titles/links if you want public citations.</p>
         </div>
+
+        <div class="resume-block card">
+          <h3 data-i18n="eduTitle">Education & credentials</h3>
+          <p data-i18n="edu1"><span class="mono">2021–2025:</span> B.A. in English Language (student), International University — Vietnam National University HCMC</p>
+          <p data-i18n="edu2"><span class="mono">Additional:</span> Literature-focused study at University of Social Sciences and Humanities (HCMC)</p>
+          <p class="small" data-i18n="edu3"><span class="mono">English:</span> IELTS 8.0 • <span class="mono">Office:</span> MOS Word 2019, MOS Excel 2019</p>
+
+          <div style="height: 12px;"></div>
+          <h3 data-i18n="strengthsTitle">Research strengths</h3>
+          <p data-i18n="strengthsBody">Fact-checking • Source evaluation • Close reading • Comparative linguistics • Editing & proofreading</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Education Section -->
-    <section class="education" id="education">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Education & Achievements</h2>
-                <p>Academic background and accomplishments</p>
-            </div>
-            <div class="education-grid">
-                <div class="education-card animate-on-scroll">
-                    <h3>Bachelor of English Language</h3>
-                    <p class="institution">International University - Vietnam National University HCMC</p>
-                    <p class="year">2021 - 2025</p>
-                    <ul class="achievements">
-                        <li>AP English Literature and Composition Award</li>
-                        <li>Highest Achievement Mathematics</li>
-                        <li>Excellent Student from Grade 1-12</li>
-                        <li>Highest English Score Grade 12</li>
-                    </ul>
-                </div>
-                <div class="education-card animate-on-scroll">
-                    <h3>Final Year Student - Literature</h3>
-                    <p class="institution">University of Social Sciences and Humanities HCMC</p>
-                    <p class="year">2021 - 2025</p>
-                    <ul class="achievements">
-                        <li>IELTS 8.0 Certified</li>
-                        <li>MOS Word 2019 Certified</li>
-                        <li>MOS Excel 2019 Certified</li>
-                        <li>Research Publications</li>
-                    </ul>
-                </div>
-            </div>
+    <section id="services" aria-label="Services">
+      <div class="section-title">
+        <h2 data-i18n="servicesTitle">Services</h2>
+        <p class="section-note" data-i18n="servicesNote">Clear packages you can book or adapt.</p>
+      </div>
+
+      <div class="grid">
+        <div class="project">
+          <h3 data-i18n="s1T">Academic English mentoring</h3>
+          <p data-i18n="s1D">For students and researchers: IELTS strategy, academic writing structure, clarity, coherence, and confident delivery.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="sTag11">1:1 sessions</span>
+            <span class="tag" data-i18n="sTag12">Feedback loops</span>
+            <span class="tag" data-i18n="sTag13">Study plans</span>
+          </div>
         </div>
+
+        <div class="project">
+          <h3 data-i18n="s2T">Editing & proofreading</h3>
+          <p data-i18n="s2D">Polish manuscripts, abstracts, SOPs, reports, and presentations—tone, logic, grammar, and scholarly style.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="sTag21">Academic tone</span>
+            <span class="tag" data-i18n="sTag22">Argument clarity</span>
+            <span class="tag" data-i18n="sTag23">Formatting help</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <h3 data-i18n="s3T">Vietnamese–English translation</h3>
+          <p data-i18n="s3D">Translations that keep meaning and culture together—literary excerpts, cultural materials, and professional documents.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="sTag31">VN → EN</span>
+            <span class="tag" data-i18n="sTag32">EN → VN</span>
+            <span class="tag" data-i18n="sTag33">Cultural sensitivity</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <h3 data-i18n="s4T">Cultural consulting & training</h3>
+          <p data-i18n="s4D">Workshops for international teams: etiquette, communication norms, and Vietnam-specific context for real scenarios.</p>
+          <div class="meta">
+            <span class="tag" data-i18n="sTag41">NGOs & business</span>
+            <span class="tag" data-i18n="sTag42">Case studies</span>
+            <span class="tag" data-i18n="sTag43">Custom modules</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Get In Touch</h2>
-                <p>Let's collaborate on meaningful projects</p>
+    <section id="contact" aria-label="Contact">
+      <div class="section-title">
+        <h2 data-i18n="contactTitle">Contact</h2>
+        <p class="section-note" data-i18n="contactNote2">Tell me your goal and your timeline—I'll suggest the best format.</p>
+      </div>
+
+      <div class="contact">
+        <div class="card pad">
+          <h3 style="margin:0 0 10px;" data-i18n="sendMsg">Send a message</h3>
+
+          <form id="contactForm">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div>
+                <label for="fromName" data-i18n="formName">Name</label>
+                <input id="fromName" name="fromName" placeholder="Your name" autocomplete="name" />
+              </div>
+              <div>
+                <label for="fromEmail" data-i18n="formEmail">Email</label>
+                <input id="fromEmail" name="fromEmail" placeholder="you@example.com" autocomplete="email" />
+              </div>
             </div>
-            <div class="contact-content">
-                <div class="contact-info animate-on-scroll">
-                    <h3>Ready to Work Together?</h3>
-                    <p>I am seeking to partner with organizations focused on humanistic development, education, culture, and community. I offer my language abilities, creative thinking, and service spirit to support leadership, develop internal activities, and communicate brand messages with subtlety, effectiveness, and emotional depth.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <span>lehoanganh1318@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <span>+84 77 312 1811</span>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <span>123 Nguyen Dinh Chieu, District 3, Ho Chi Minh City</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form animate-on-scroll">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter your email">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required placeholder="Enter subject">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+
+            <div style="margin-top: 12px;">
+              <label for="topic" data-i18n="formNeed">What do you need?</label>
+              <input id="topic" name="topic" placeholder="e.g., IELTS writing mentoring / cultural training / translation / journal project" />
             </div>
+
+            <div style="margin-top: 12px;">
+              <label for="message" data-i18n="formDetails">Details</label>
+              <textarea id="message" name="message" placeholder="Goal, deadline, approximate length, and any links/files."></textarea>
+            </div>
+
+            <div style="display:flex; gap: 10px; flex-wrap: wrap; margin-top: 12px;">
+              <button class="btn primary" type="submit" data-i18n="openDraft">Open email draft</button>
+              <a class="btn" href="mailto:lehoanganh1318@gmail.com" data-i18n="emailDirect">Email directly</a>
+              <button class="btn" type="button" id="copyPhoneBtn" data-i18n="copyPhone">Copy phone</button>
+            </div>
+
+            <p class="hint" data-i18n="privacyHint">No data is stored—this page simply prepares an email draft on your device.</p>
+          </form>
         </div>
+
+        <div class="resume-block card">
+          <h3 data-i18n="snapshotTitle">Professional snapshot</h3>
+          <p data-i18n="snap1"><span class="mono">Focus:</span> Vietnamese cultural nuance + academic English performance + research-grade writing</p>
+          <p data-i18n="snap2"><span class="mono">Experience:</span> Teaching English & literature, IELTS training, Vietnamese for foreigners, translation/editing support</p>
+          <p data-i18n="snap3"><span class="mono">Strengths:</span> Editing, proofreading, VN–EN translation, comparative linguistics, research & fact-checking</p>
+          <p class="small" data-i18n="snap4"><span class="mono">Location:</span> Vietnam (remote-friendly)</p>
+
+          <div style="height: 12px;"></div>
+          <h3 data-i18n="includeTitle">What to include</h3>
+          <ul class="list" style="margin-top: 8px;">
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="inc1T">Audience</div><div class="li-body" data-i18n="inc1D">Students, researchers, NGOs, international teams, publishers.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="inc2T">Deliverable</div><div class="li-body" data-i18n="inc2D">Workshop, edited manuscript, translation, training, or research output.</div></div></li>
+            <li><div class="dot" aria-hidden="true"></div><div><div class="li-title" data-i18n="inc3T">Timeline</div><div class="li-body" data-i18n="inc3D">Your deadline and how iterative you want feedback to be.</div></div></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="#" aria-label="LinkedIn">in</a>
-                <a href="#" aria-label="Email">✉</a>
-                <a href="#" aria-label="ResearchGate">RG</a>
-            </div>
-            <p>&copy; 2025 Le Hoang Anh. All rights reserved.</p>
-        </div>
+      <div class="foot">
+        <div>© <span id="year"></span> Le Hoang Anh. <span data-i18n="rights">All rights reserved.</span></div>
+      </div>
     </footer>
+  </main>
 
-    <script>
-        // Mobile Navigation Toggle
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const themeBtn = document.getElementById('themeBtn');
+      const langBtn = document.getElementById('langBtn');
+      const langLabel = document.getElementById('langLabel');
+      const year = document.getElementById('year');
+      const toast = document.getElementById('toast');
+
+      year.textContent = new Date().getFullYear();
+
+      function showToast(msg){
+        toast.textContent = msg;
+        toast.classList.add('show');
+        window.setTimeout(() => toast.classList.remove('show'), 1400);
+      }
+
+      // Default: light theme (and persist if user toggles)
+      const storedTheme = localStorage.getItem('theme');
+      if(storedTheme){
+        root.setAttribute('data-theme', storedTheme);
+      } else {
+        root.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+
+      themeBtn.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') || 'light';
+        const next = current === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        showToast((current === 'light') ? dict[getLang()].toastDark : dict[getLang()].toastLight);
+      });
+
+      // Language (default English)
+      const dict = {
+        en: {
+          skip: "Skip to content",
+          brandTag: "Culture • Academic English • Literature Research",
+          navAbout: "About",
+          navRoles: "Roles",
+          navProjects: "Projects",
+          navResearch: "Research",
+          navServices: "Services",
+          navContact: "Contact",
+          theme: "Theme",
+          ctaWork: "Work with me",
+
+          heroPill: "Interdisciplinary bridge: Vietnam ↔ Global academia",
+          heroH1: "Vietnamese culture, academic English, and literature—woven into practical outcomes.",
+          heroLead: "I work across three roles at once: Vietnamese Language & Cultural Consultant, IELTS & Academic English Mentor, and Advanced Literature & Research Specialist. My focus is helping people communicate with precision, cultural fluency, and scholarly rigor.",
+          heroExplore: "Explore projects",
+          copyEmail: "Copy email",
+          heroRequest: "Request a session",
+
+          kpi1: "Credentialed English proficiency",
+          kpi2Big: "Teaching + editing",
+          kpi2: "English, literature, IELTS, Vietnamese for foreigners",
+          kpi3Big: "Research-ready",
+          kpi3: "Literary analysis, theory, fact-checking",
+
+          quote: "I design work that is both scholarly and usable: workshops, edited manuscripts, translations, and research-informed cultural training.",
+
+          quickLinks: "Quick links",
+          portfolioPdf: "Portfolio PDF",
+          linksHint: "Tip: replace “#” links with your real profiles.",
+          availability: "Availability",
+          availRemote: "Remote",
+          availVN: "Vietnam-focused",
+          availAA: "Academic + professional",
+
+          aboutTitle: "About",
+          aboutNote: "A portfolio built for scholarship, mentoring, and cultural consultancy.",
+          aboutLead: "I’m an English-language student with strong experience in teaching and language editing, and I specialise in Vietnamese–English translation/interpretation, comparative linguistics, and research-based writing.",
+          aboutB1T: "Cultural clarity",
+          aboutB1D: "Make Vietnamese cultural contexts legible to international teams—without flattening nuance.",
+          aboutB2T: "Academic English that sounds like you",
+          aboutB2D: "Mentor writers toward clear arguments, strong structure, and accurate academic tone.",
+          aboutB3T: "Literature + theory",
+          aboutB3D: "Apply close reading, contemporary theory, and careful citation practice to research outputs.",
+
+          coreProfile: "Core profile",
+          nameLabel: "Name:",
+          emailLabel: "Email:",
+          phoneLabel: "Phone:",
+          noteLabel: "Note:",
+          contactNote: "This contact block uses the information currently in your CV; update it if you want a different public email/phone.",
+          toolsTitle: "Tools",
+          toolsBody: "Microsoft Office Specialist: Word 2019, Excel 2019 • Google Drive • Canva • CapCut",
+
+          rolesTitle: "My three roles",
+          rolesNote: "One identity, three lenses—designed to reinforce each other.",
+          r1T: "Vietnamese Language & Cultural Consultant",
+          r1D: "I help international partners and Vietnamese professionals communicate across cultural expectations—through language nuance, etiquette, and context-rich interpretation.",
+          r2T: "IELTS & Academic English Mentor",
+          r2D: "I mentor learners and researchers toward higher performance and clearer writing—IELTS strategies, academic style, argumentation, and careful editing.",
+          r3T: "Advanced Literature & Research Specialist",
+          r3D: "My research practice combines close reading, comparative approaches, and theory (including gender and identity frameworks) to produce publishable, well-evidenced analysis.",
+          r4T: "How they intersect",
+          r4D: "I use literature to teach language, and research to inform cultural consulting—so each deliverable is both intellectually grounded and practically useful.",
+
+          tagC1: "Cultural context",
+          tagC2: "Vietnamese for foreigners",
+          tagC3: "Interpreting support",
+          tagC4: "Cross-cultural communication",
+          tagE2: "Academic writing",
+          tagE3: "Editing & proofreading",
+          tagE4: "Workshops",
+          tagR1: "Literary analysis",
+          tagR2: "Comparative linguistics",
+          tagR3: "Fact-checking",
+          tagR4: "Conference writing",
+          tagX1: "Interdisciplinary design",
+          tagX2: "Global relevance",
+          tagX3: "Tangible outcomes",
+
+          projectsTitle: "Signature projects",
+          projectsNote: "Your six portfolio pillars—ready to build and publish.",
+          filterAll: "All",
+          filterConsulting: "Consulting",
+          filterIELTS: "IELTS/Academic English",
+          filterResearch: "Research/Literature",
+
+          p1T: "Bilingual Academic Journal for Vietnamese Studies",
+          p1D: "Launch an open-access, peer-reviewed journal on Vietnamese literature, culture, and linguistics—publishing in Vietnamese and English.",
+          p2T: "Cultural Competency Training for International Organizations",
+          p2D: "A training program for NGOs, businesses, and institutions working in Vietnam—cultural sensitivity, language nuance, and communication.",
+          p3T: "Vietnamese Literature in English Translation Anthology",
+          p3D: "Compile an annotated anthology of Vietnamese short stories, poems, or essays in English translation, with academic commentary.",
+          p4T: "Online Platform for Vietnamese–English Academic Collaboration",
+          p4D: "Create a digital hub where Vietnamese and international academics and students collaborate on research, language exchange, and culture.",
+          p5T: "Research: “The Influence of Vietnamese Folklore on Modern Literature”",
+          p5D: "A research program linking folklore and oral traditions to contemporary Vietnamese literature—especially texts available in English.",
+          p6T: "Podcast/YouTube: “Vietnamese Voices in English”",
+          p6D: "Interviews with Vietnamese authors, scholars, and professionals who work in English—identity, barriers, and global reception.",
+
+          pTagOA: "Open access",
+          pTagPR: "Peer review",
+          pTagVNEN: "VN ↔ EN",
+          pTagWM: "Workplace modules",
+          pTagCS: "Case studies",
+          pTagComm: "Communication",
+          pTagTrans: "Translation",
+          pTagAnno: "Annotations",
+          pTagTeach: "Teaching tool",
+          pTagCommunity: "Community",
+          pTagWorkshops: "Workshops",
+          pTagDH: "Digital humanities",
+          pTagFolklore: "Folklore",
+          pTagModern: "Modern literature",
+          pTagPublic: "Public scholarship",
+          pTagMedia: "Media",
+          pTagDiaspora: "Diaspora",
+          pTagTips: "Academic tips",
+
+          pConsulting: "Consulting",
+          pMentoring: "Mentoring",
+          pResearch: "Research",
+          p1C: "Curate and translate cultural analysis, folklore, and contemporary works.",
+          p1M: "Run academic English workshops for Vietnamese researchers; edit submissions.",
+          p1R: "Publish original work (post-colonial, comparative literature, modern trends).",
+          p2C: "Customs, business etiquette, Vietnamese language use in professional contexts.",
+          p2M: "English materials + IELTS-style diagnostics tailored to workplace collaboration.",
+          p2R: "Literary/historical examples to explain cross-cultural friction points.",
+          p3C: "Select culturally diverse works; ensure sensitive, accurate translation.",
+          p3M: "Use the anthology for advanced English learning: analysis, vocabulary, style.",
+          p3R: "Write contextual essays linking Vietnamese literary history to global frames.",
+          p4C: "Moderate discussions; provide cultural context and language support.",
+          p4M: "Live Q&A, writing workshops, IELTS tips for study-abroad pathways.",
+          p4R: "Lead comparative studies and publish findings on the platform.",
+          p5C: "Interviews, oral histories, and cultural theme analysis with authors.",
+          p5M: "Lesson plans and presentations using excerpts to teach advanced English analysis.",
+          p5R: "Conference papers, journal articles, and a public-facing summary (blog/podcast).",
+          p6C: "Guide conversations on cultural identity and translating ideas across languages.",
+          p6M: "Segments on academic English, common errors, and international communication.",
+          p6R: "Themes: post-colonialism, diaspora writing, and global literary circulation.",
+
+          researchTitle: "Research & writing",
+          researchNote: "Selected topics from conference-style and academic writing.",
+          researchDirTitle: "Selected research directions",
+          rd1T: "Religious symbolism & identity",
+          rd1D: "Textual analysis of symbolism and personal development narratives in modern literature.",
+          rd2T: "Gender performativity & representation",
+          rd2D: "Literary readings informed by Judith Butler’s framework to interpret character performance and identity.",
+          rd3T: "Desire in contemporary Vietnamese literature",
+          rd3D: "Researching voice, intimacy, and modern expression through Vietnamese texts and authors.",
+          researchHint: "Replace these with exact titles/links if you want public citations.",
+
+          eduTitle: "Education & credentials",
+          edu1: "2021–2025: B.A. in English Language (student), International University — Vietnam National University HCMC",
+          edu2: "Additional: Literature-focused study at University of Social Sciences and Humanities (HCMC)",
+          edu3: "English: IELTS 8.0 • Office: MOS Word 2019, MOS Excel 2019",
+          strengthsTitle: "Research strengths",
+          strengthsBody: "Fact-checking • Source evaluation • Close reading • Comparative linguistics • Editing & proofreading",
+
+          servicesTitle: "Services",
+          servicesNote: "Clear packages you can book or adapt.",
+          s1T: "Academic English mentoring",
+          s1D: "For students and researchers: IELTS strategy, academic writing structure, clarity, coherence, and confident delivery.",
+          s2T: "Editing & proofreading",
+          s2D: "Polish manuscripts, abstracts, SOPs, reports, and presentations—tone, logic, grammar, and scholarly style.",
+          s3T: "Vietnamese–English translation",
+          s3D: "Translations that keep meaning and culture together—literary excerpts, cultural materials, and professional documents.",
+          s4T: "Cultural consulting & training",
+          s4D: "Workshops for international teams: etiquette, communication norms, and Vietnam-specific context for real scenarios.",
+
+          sTag11: "1:1 sessions",
+          sTag12: "Feedback loops",
+          sTag13: "Study plans",
+          sTag21: "Academic tone",
+          sTag22: "Argument clarity",
+          sTag23: "Formatting help",
+          sTag31: "VN → EN",
+          sTag32: "EN → VN",
+          sTag33: "Cultural sensitivity",
+          sTag41: "NGOs & business",
+          sTag42: "Case studies",
+          sTag43: "Custom modules",
+
+          contactTitle: "Contact",
+          contactNote2: "Tell me your goal and your timeline—I'll suggest the best format.",
+          sendMsg: "Send a message",
+          formName: "Name",
+          formEmail: "Email",
+          formNeed: "What do you need?",
+          formDetails: "Details",
+          openDraft: "Open email draft",
+          emailDirect: "Email directly",
+          copyPhone: "Copy phone",
+          privacyHint: "No data is stored—this page simply prepares an email draft on your device.",
+
+          snapshotTitle: "Professional snapshot",
+          snap1: "Focus: Vietnamese cultural nuance + academic English performance + research-grade writing",
+          snap2: "Experience: Teaching English & literature, IELTS training, Vietnamese for foreigners, translation/editing support",
+          snap3: "Strengths: Editing, proofreading, VN–EN translation, comparative linguistics, research & fact-checking",
+          snap4: "Location: Vietnam (remote-friendly)",
+
+          includeTitle: "What to include",
+          inc1T: "Audience",
+          inc1D: "Students, researchers, NGOs, international teams, publishers.",
+          inc2T: "Deliverable",
+          inc2D: "Workshop, edited manuscript, translation, training, or research output.",
+          inc3T: "Timeline",
+          inc3D: "Your deadline and how iterative you want feedback to be.",
+
+          rights: "All rights reserved.",
+          singleFile: "Built as a single-file portfolio: index.html",
+
+          toastLight: "Theme: light",
+          toastDark: "Theme: dark",
+          toastEN: "Language: English",
+          toastVI: "Language: Vietnamese",
+          copiedEmail: "Email copied",
+          copiedPhone: "Phone copied",
+          copyFailed: "Copy failed (browser permission)"
+        },
+
+        vi: {
+          skip: "Bỏ qua để đến nội dung",
+          brandTag: "Văn hoá • Tiếng Anh học thuật • Nghiên cứu văn học",
+          navAbout: "Giới thiệu",
+          navRoles: "Vai trò",
+          navProjects: "Dự án",
+          navResearch: "Nghiên cứu",
+          navServices: "Dịch vụ",
+          navContact: "Liên hệ",
+          theme: "Giao diện",
+          ctaWork: "Hợp tác cùng tôi",
+
+          heroPill: "Cầu nối liên ngành: Việt Nam ↔ Học thuật toàn cầu",
+          heroH1: "Văn hoá Việt, tiếng Anh học thuật và văn chương—được dệt thành giá trị thực tiễn.",
+          heroLead: "Tôi làm đồng thời ba vai trò: Tư vấn Ngôn ngữ & Văn hoá Việt, Mentor IELTS & Tiếng Anh học thuật, và Chuyên gia Nghiên cứu & Văn học nâng cao. Mục tiêu của tôi là giúp mọi người giao tiếp chính xác, thấu hiểu văn hoá và vững chuẩn học thuật.",
+          heroExplore: "Khám phá dự án",
+          copyEmail: "Sao chép email",
+          heroRequest: "Đặt lịch mentoring",
+
+          kpi1: "Năng lực tiếng Anh đã được chứng nhận",
+          kpi2Big: "Giảng dạy + biên tập",
+          kpi2: "Tiếng Anh, văn học, IELTS, tiếng Việt cho người nước ngoài",
+          kpi3Big: "Sẵn sàng nghiên cứu",
+          kpi3: "Phân tích văn học, lý thuyết, kiểm chứng thông tin",
+
+          quote: "Tôi thiết kế sản phẩm vừa học thuật vừa hữu dụng: workshop, bản thảo đã biên tập, bản dịch và chương trình đào tạo văn hoá dựa trên nghiên cứu.",
+
+          quickLinks: "Liên kết nhanh",
+          portfolioPdf: "Hồ sơ PDF",
+          linksHint: "Gợi ý: hãy thay các liên kết “#” bằng trang thật của bạn.",
+          availability: "Khả năng làm việc",
+          availRemote: "Từ xa",
+          availVN: "Tập trung bối cảnh Việt Nam",
+          availAA: "Học thuật + chuyên nghiệp",
+
+          aboutTitle: "Giới thiệu",
+          aboutLead: "Tôi là sinh viên chuyên ngành tiếng Anh với kinh nghiệm giảng dạy và biên tập ngôn ngữ; đồng thời chuyên về dịch/phiên dịch Việt–Anh, ngôn ngữ học so sánh và viết dựa trên nghiên cứu.",
+          aboutB1T: "Làm rõ bối cảnh văn hoá",
+          aboutB1D: "Giúp đội ngũ quốc tế hiểu bối cảnh văn hoá Việt mà vẫn giữ nguyên sắc thái.",
+          aboutB2T: "Tiếng Anh học thuật “đúng chất bạn”",
+          aboutB2D: "Mentor để lập luận rõ, cấu trúc chặt và giọng văn học thuật chuẩn xác.",
+          aboutB3T: "Văn học + lý thuyết",
+          aboutB3D: "Kết hợp close reading, lý thuyết đương đại và kỷ luật trích dẫn để tạo đầu ra nghiên cứu chất lượng.",
+
+          coreProfile: "Thông tin cốt lõi",
+          nameLabel: "Họ tên:",
+          emailLabel: "Email:",
+          phoneLabel: "Điện thoại:",
+          noteLabel: "Lưu ý:",
+          toolsTitle: "Công cụ",
+          toolsBody: "MOS: Word 2019, Excel 2019 • Google Drive • Canva • CapCut",
+
+          rolesTitle: "Ba vai trò của tôi",
+          rolesNote: "Một bản sắc, ba lăng kính—hỗ trợ lẫn nhau.",
+          r1T: "Tư vấn Ngôn ngữ & Văn hoá Việt",
+          r1D: "Tôi giúp đối tác quốc tế và chuyên gia Việt giao tiếp vượt khác biệt kỳ vọng văn hoá—thông qua sắc thái ngôn ngữ, phép tắc và diễn giải giàu bối cảnh.",
+          r2T: "Mentor IELTS & Tiếng Anh học thuật",
+          r2D: "Tôi mentor người học và nhà nghiên cứu để tiến bộ rõ rệt: chiến lược IELTS, phong cách học thuật, lập luận và biên tập cẩn trọng.",
+          r3T: "Chuyên gia Nghiên cứu & Văn học nâng cao",
+          r3D: "Tôi kết hợp close reading, tiếp cận so sánh và lý thuyết (bao gồm khung về giới và bản sắc) để tạo phân tích có thể xuất bản, có chứng cứ vững.",
+          r4T: "Giao điểm của ba vai trò",
+          r4D: "Tôi dùng văn học để dạy ngôn ngữ, và dùng nghiên cứu để nâng chất tư vấn—để mỗi sản phẩm vừa có nền tảng trí tuệ vừa ứng dụng hiệu quả.",
+
+          tagC1: "Bối cảnh văn hoá",
+          tagC2: "Tiếng Việt cho người nước ngoài",
+          tagC3: "Hỗ trợ phiên dịch",
+          tagC4: "Giao tiếp liên văn hoá",
+          tagE2: "Viết học thuật",
+          tagE3: "Biên tập & soát lỗi",
+          tagE4: "Workshop",
+          tagR1: "Phân tích văn học",
+          tagR2: "Ngôn ngữ học so sánh",
+          tagR3: "Kiểm chứng thông tin",
+          tagR4: "Viết bài hội thảo",
+          tagX1: "Thiết kế liên ngành",
+          tagX2: "Tính toàn cầu",
+          tagX3: "Đầu ra hữu hình",
+
+          projectsTitle: "Dự án chủ lực",
+          projectsNote: "Sáu trụ cột portfolio—sẵn sàng triển khai và công bố.",
+          filterAll: "Tất cả",
+          filterConsulting: "Tư vấn",
+          filterIELTS: "IELTS/Tiếng Anh học thuật",
+          filterResearch: "Nghiên cứu/Văn học",
+
+          p1T: "Tạp chí học thuật song ngữ về Việt Nam học",
+          p1D: "Ra mắt tạp chí open-access, phản biện khoa học về văn học, văn hoá và ngôn ngữ Việt—xuất bản bằng tiếng Việt và tiếng Anh.",
+          p2T: "Đào tạo năng lực văn hoá cho tổ chức quốc tế",
+          p2D: "Chương trình cho NGO/doanh nghiệp/tổ chức hoạt động tại Việt Nam—nhạy cảm văn hoá, sắc thái ngôn ngữ và giao tiếp hiệu quả.",
+          p3T: "Tuyển tập văn học Việt dịch sang tiếng Anh",
+          p3D: "Biên soạn tuyển tập truyện ngắn/thơ/tản văn Việt dịch sang tiếng Anh kèm chú giải và bình luận học thuật.",
+          p4T: "Nền tảng cộng tác học thuật Việt–Anh",
+          p4D: "Tạo hub số để học giả/sinh viên Việt và quốc tế cùng hợp tác nghiên cứu, trao đổi ngôn ngữ và dự án văn hoá.",
+          p5T: "Nghiên cứu: “Ảnh hưởng của folklore Việt lên văn học hiện đại”",
+          p5D: "Chương trình nghiên cứu kết nối folklore/truyền khẩu với văn học Việt đương đại—đặc biệt các tác phẩm có bản dịch tiếng Anh.",
+          p6T: "Podcast/YouTube: “Vietnamese Voices in English”",
+          p6D: "Phỏng vấn tác giả/học giả/chuyên gia Việt làm việc bằng tiếng Anh—bản sắc, rào cản và tiếp nhận toàn cầu.",
+
+          pTagOA: "Mở truy cập",
+          pTagPR: "Phản biện",
+          pTagVNEN: "Việt ↔ Anh",
+          pTagWM: "Module công sở",
+          pTagCS: "Tình huống",
+          pTagComm: "Giao tiếp",
+          pTagTrans: "Dịch thuật",
+          pTagAnno: "Chú giải",
+          pTagTeach: "Công cụ giảng dạy",
+          pTagCommunity: "Cộng đồng",
+          pTagWorkshops: "Workshop",
+          pTagDH: "Nhân văn số",
+          pTagFolklore: "Folklore",
+          pTagModern: "Văn học hiện đại",
+          pTagPublic: "Học thuật đại chúng",
+          pTagMedia: "Truyền thông",
+          pTagDiaspora: "Hải ngoại",
+          pTagTips: "Mẹo học thuật",
+
+          pConsulting: "Tư vấn",
+          pMentoring: "Mentoring",
+          pResearch: "Nghiên cứu",
+          p1C: "Tuyển chọn và dịch phân tích văn hoá, folklore và tác phẩm đương đại.",
+          p1M: "Tổ chức workshop tiếng Anh học thuật cho nhà nghiên cứu Việt; biên tập bài gửi.",
+          p1R: "Công bố nghiên cứu gốc (hậu thực dân, so sánh, xu hướng hiện đại).",
+          p2C: "Phong tục, phép tắc kinh doanh và cách dùng tiếng Việt trong môi trường chuyên nghiệp.",
+          p2M: "Tài liệu tiếng Anh + đánh giá kiểu IELTS phù hợp bối cảnh hợp tác công sở.",
+          p2R: "Dẫn chứng văn học/lịch sử để soi chiếu các điểm xung đột liên văn hoá.",
+          p3C: "Chọn tác phẩm đa dạng văn hoá; đảm bảo bản dịch nhạy cảm và chính xác.",
+          p3M: "Dùng tuyển tập để dạy tiếng Anh nâng cao: phân tích, từ vựng, phong cách.",
+          p3R: "Viết bài dẫn nhập đặt tác phẩm vào lịch sử văn học Việt và khung toàn cầu.",
+          p4C: "Điều phối thảo luận; cung cấp bối cảnh văn hoá và hỗ trợ ngôn ngữ.",
+          p4M: "Q&A trực tiếp, workshop viết, mẹo IELTS cho lộ trình du học.",
+          p4R: "Dẫn dắt nghiên cứu so sánh và công bố kết quả trên nền tảng.",
+          p5C: "Phỏng vấn, tư liệu truyền khẩu và phân tích chủ đề văn hoá cùng tác giả.",
+          p5M: "Giáo án/bài trình bày dùng trích đoạn để dạy phân tích tiếng Anh nâng cao.",
+          p5R: "Bài hội thảo, bài báo và bản tóm tắt đại chúng (blog/podcast).",
+          p6C: "Dẫn dắt thảo luận về bản sắc văn hoá và dịch ý tưởng giữa hai ngôn ngữ.",
+          p6M: "Chia sẻ mẹo tiếng Anh học thuật, lỗi thường gặp và giao tiếp quốc tế.",
+          p6R: "Chủ đề: hậu thực dân, văn chương hải ngoại và lưu thông văn học toàn cầu.",
+
+          researchTitle: "Nghiên cứu & viết",
+          researchNote: "Một số hướng viết theo phong cách hội thảo và học thuật.",
+          researchDirTitle: "Hướng nghiên cứu tiêu biểu",
+          rd1T: "Biểu tượng tôn giáo & bản sắc",
+          rd1D: "Phân tích văn bản về biểu tượng và hành trình hình thành bản ngã trong văn chương hiện đại.",
+          rd2T: "Tính biểu diễn giới & biểu đạt",
+          rd2D: "Đọc văn bản theo khung Judith Butler để diễn giải diễn ngôn/bản sắc nhân vật.",
+          rd3T: "Diễn ngôn khát khao trong văn học Việt đương đại",
+          rd3D: "Khảo sát giọng nói, thân mật và cách biểu đạt hiện đại trong văn bản Việt.",
+          researchHint: "Bạn có thể thay bằng tiêu đề/link chính xác nếu muốn công bố công khai.",
+
+          eduTitle: "Học vấn & chứng chỉ",
+          edu1: "2021–2025: Cử nhân Ngôn ngữ Anh (sinh viên), Trường Đại học Quốc tế — ĐHQG TP.HCM",
+          edu2: "Bổ sung: Hướng văn học tại Trường ĐH KHXH&NV (TP.HCM)",
+          edu3: "Tiếng Anh: IELTS 8.0 • Tin học: MOS Word 2019, MOS Excel 2019",
+          strengthsTitle: "Thế mạnh nghiên cứu",
+          strengthsBody: "Kiểm chứng thông tin • Thẩm định nguồn • Close reading • Ngôn ngữ học so sánh • Biên tập & soát lỗi",
+
+          servicesTitle: "Dịch vụ",
+          servicesNote: "Gói rõ ràng, có thể đặt lịch hoặc điều chỉnh theo nhu cầu.",
+          s1T: "Mentor tiếng Anh học thuật",
+          s1D: "Dành cho người học và nhà nghiên cứu: chiến lược IELTS, cấu trúc bài viết, rõ ý, mạch lạc và trình bày tự tin.",
+          s2T: "Biên tập & soát lỗi",
+          s2D: "Chỉnh bản thảo/abstract/SOP/báo cáo/slide—giọng văn, logic, ngữ pháp và chuẩn học thuật.",
+          s3T: "Dịch Việt–Anh",
+          s3D: "Bản dịch giữ được nghĩa và văn hoá—trích đoạn văn học, tài liệu văn hoá và tài liệu chuyên môn.",
+          s4T: "Tư vấn & đào tạo văn hoá",
+          s4D: "Workshop cho đội ngũ quốc tế: phép tắc, chuẩn giao tiếp và bối cảnh Việt Nam theo tình huống thực.",
+
+          sTag11: "1-1",
+          sTag12: "Phản hồi theo vòng",
+          sTag13: "Kế hoạch học",
+          sTag21: "Giọng văn học thuật",
+          sTag22: "Rõ lập luận",
+          sTag23: "Hỗ trợ định dạng",
+          sTag31: "Việt → Anh",
+          sTag32: "Anh → Việt",
+          sTag33: "Nhạy cảm văn hoá",
+          sTag41: "NGO & doanh nghiệp",
+          sTag42: "Tình huống",
+          sTag43: "Module tuỳ chỉnh",
+
+          contactTitle: "Liên hệ",
+          contactNote2: "Bạn cho tôi mục tiêu và thời hạn—tôi sẽ gợi ý hình thức phù hợp.",
+          sendMsg: "Gửi tin nhắn",
+          formName: "Tên",
+          formEmail: "Email",
+          formNeed: "Bạn cần gì?",
+          formDetails: "Chi tiết",
+          openDraft: "Mở bản nháp email",
+          emailDirect: "Gửi email trực tiếp",
+          copyPhone: "Sao chép số điện thoại",
+          privacyHint: "Trang không lưu dữ liệu—chỉ tạo bản nháp email trên thiết bị của bạn.",
+
+          snapshotTitle: "Tóm tắt chuyên môn",
+          snap1: "Trọng tâm: sắc thái văn hoá Việt + hiệu suất tiếng Anh học thuật + kỹ năng viết chuẩn nghiên cứu",
+          snap2: "Kinh nghiệm: dạy tiếng Anh & văn học, luyện IELTS, dạy tiếng Việt cho người nước ngoài, hỗ trợ dịch/biên tập",
+          snap3: "Thế mạnh: biên tập, soát lỗi, dịch Việt–Anh, ngôn ngữ học so sánh, nghiên cứu & kiểm chứng thông tin",
+          snap4: "Địa điểm: Việt Nam (làm việc từ xa)",
+
+          includeTitle: "Nên cung cấp",
+          inc1T: "Đối tượng",
+          inc1D: "Học sinh/sinh viên, nhà nghiên cứu, NGO, đội ngũ quốc tế, nhà xuất bản.",
+          inc2T: "Đầu ra",
+          inc2D: "Workshop, bản thảo đã biên tập, bản dịch, đào tạo, hoặc sản phẩm nghiên cứu.",
+          inc3T: "Thời hạn",
+          inc3D: "Deadline và mức độ phản hồi theo vòng mà bạn mong muốn.",
+
+          rights: "Bảo lưu mọi quyền.",
+          singleFile: "Xây dựng dạng một tệp: index.html",
+
+          toastLight: "Giao diện: sáng",
+          toastDark: "Giao diện: tối",
+          toastEN: "Ngôn ngữ: English",
+          toastVI: "Ngôn ngữ: Tiếng Việt",
+          copiedEmail: "Đã sao chép email",
+          copiedPhone: "Đã sao chép số điện thoại",
+          copyFailed: "Không thể sao chép (quyền trình duyệt)"
+        }
+      };
+
+      function getLang(){
+        return localStorage.getItem('lang') || 'en';
+      }
+
+      function setLang(lang){
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = (lang === 'vi') ? 'vi' : 'en';
+        langLabel.textContent = (lang === 'vi') ? 'VI' : 'EN';
+
+        const nodes = document.querySelectorAll('[data-i18n]');
+        nodes.forEach(n => {
+          const key = n.getAttribute('data-i18n');
+          const val = dict[lang][key];
+          if(typeof val === 'string') n.textContent = val;
         });
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+        showToast(lang === 'vi' ? dict[lang].toastVI : dict[lang].toastEN);
+      }
+
+      // Init language (default English)
+      const storedLang = localStorage.getItem('lang');
+      if(storedLang){
+        setLang(storedLang);
+      } else {
+        setLang('en');
+      }
+
+      langBtn.addEventListener('click', () => {
+        const current = getLang();
+        const next = current === 'en' ? 'vi' : 'en';
+        setLang(next);
+      });
+
+      // Copy helpers
+      const copyEmailBtn = document.getElementById('copyEmailBtn');
+      const copyPhoneBtn = document.getElementById('copyPhoneBtn');
+
+      copyEmailBtn.addEventListener('click', async () => {
+        const lang = getLang();
+        try {
+          await navigator.clipboard.writeText('lehoanganh1318@gmail.com');
+          showToast(dict[lang].copiedEmail);
+        } catch(e){
+          showToast(dict[lang].copyFailed);
+        }
+      });
+
+      copyPhoneBtn.addEventListener('click', async () => {
+        const lang = getLang();
+        try {
+          await navigator.clipboard.writeText('+84773121811');
+          showToast(dict[lang].copiedPhone);
+        } catch(e){
+          showToast(dict[lang].copyFailed);
+        }
+      });
+
+      // Project filters
+      const filters = Array.from(document.querySelectorAll('.filter'));
+      const projects = Array.from(document.querySelectorAll('.project'));
+
+      function setPressed(btn){
+        filters.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      }
+      function applyFilter(key){
+        projects.forEach(p => {
+          const tags = (p.getAttribute('data-tags') || '').split(/\s+/).filter(Boolean);
+          const show = key === 'all' ? true : tags.includes(key);
+          p.style.display = show ? '' : 'none';
         });
-
-        // Scroll Animation
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Initial check
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+      }
+      filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-filter');
+          setPressed(btn);
+          applyFilter(key);
         });
+      });
 
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+      // Mailto form
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const lang = getLang();
+        const name = (document.getElementById('fromName').value || '').trim();
+        const fromEmail = (document.getElementById('fromEmail').value || '').trim();
+        const topic = (document.getElementById('topic').value || '').trim();
+        const message = (document.getElementById('message').value || '').trim();
 
-            // Create mailto link
-            const mailtoLink = `mailto:lehoanganh1318@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
-            window.location.href = mailtoLink;
+        const subject = encodeURIComponent((topic ? topic : (lang === 'vi' ? 'Liên hệ' : 'Inquiry')) + (name ? ' — ' + name : ''));
+        const greet = (lang === 'vi') ? "Chào Hoàng Anh," : "Hello Hoàng Anh,";
+        const fallback = (lang === 'vi') ? "Mình muốn trao đổi về một cơ hội hợp tác." : "I'd like to discuss a potential collaboration.";
+        const body = encodeURIComponent(
+          greet + "\n\n" +
+          (message ? message : fallback) +
+          "\n\n—\n" +
+          (name ? name : (lang === 'vi' ? "Tên của bạn" : "Your name")) +
+          (fromEmail ? "\n" + fromEmail : "")
+        );
 
-            // Show success message
-            alert('Thank you for your message! Your email client will open to send the message.');
-            this.reset();
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
-            } else {
-                nav.style.boxShadow = 'none';
-            }
-        });
-    </script>
+        const mailto = "mailto:lehoanganh1318@gmail.com?subject=" + subject + "&body=" + body;
+        window.location.href = mailto;
+      });
+    })();
+  </script>
 </body>
 </html>
-
