@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Hoang Anh - Bridging Vietnamese Culture, Language, and Literature</title>
+    <style>
+        /* Vietnamese-inspired theme: Jade green (#1a5f3a), gold (#d4a017), crimson (#c8102e), clean academic minimalism */
+        :root {
+            --primary: #1a5f3a;
+            --accent: #d4a017;
+            --secondary: #c8102e;
+            --bg: #f8f9fa;
+            --text: #333;
+            --white: #fff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--bg) 0%, #e8f4f0 100%);
+        }
+        header {
+            min-height: 100vh;
+            background: linear-gradient(rgba(26,95,58,0.8), rgba(26,95,58,0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="lotus" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="%23d4a017" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23lotus)"/></svg>');
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+        }
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 300; letter-spacing: 0.1em; }
+        .roles {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1rem 0; font-size: 1.2rem;
+        }
+        .role { background: rgba(212,160,23,0.2); padding: 0.5rem 1rem; border-radius: 25px; border: 1px solid var(--accent); }
+        .tagline { font-size: 1.3rem; max-width: 600px; opacity: 0.95; }
+        nav {
+            position: fixed; top: 0; width: 100%; background: var(--white); box-shadow: var(--shadow); z-index: 1000;
+        }
+        nav ul {
+            list-style: none; display: flex; justify-content: center; padding: 1rem 0;
+        }
+        nav a { color: var(--primary); text-decoration: none; padding: 0.5rem 1.5rem; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--accent); }
+        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h2 {
+            font-size: 2.5rem; text-align: center; margin-bottom: 2rem; color: var(--primary);
+            position: relative; display: inline-block;
+        }
+        h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: var(--accent); }
+        .about p { font-size: 1.1rem; max-width: 800px; margin: 0 auto 1.5rem; text-align: center; }
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .expertise-card {
+            background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); text-align: center;
+            border-left: 5px solid var(--accent);
+        }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card {
+            background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); transition: transform 0.3s;
+        }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card h3 { color: var(--primary); margin-bottom: 1rem; }
+        .project-role { font-weight: bold; color: var(--secondary); margin-bottom: 0.5rem; }
+        .experience-list, .skills-list { display: flex; flex-direction: column; gap: 1rem; }
+        .experience-item, .skill { background: var(--white); padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); }
+        .contact { background: var(--primary); color: var(--white); text-align: center; }
+        .contact a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .roles { flex-direction: column; }
+            section { padding: 3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Lê Hoàng Anh</h1>
+        <div class="roles">
+            <div class="role">Vietnamese Language & Cultural Consultant</div>
+            <div class="role">IELTS & Academic English Mentor</div>
+            <div class="role">Advanced Literature & Research Specialist</div>
+        </div>
+        <p class="tagline">Bridging Vietnamese heritage with global academia through language mastery, cultural insight, and literary excellence. IELTS 8.0 certified, with a passion for translation, research, and cross-cultural collaboration.[file:1]</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>With profound expertise in Vietnamese language, literature, and culture, I apply creative writing, editing, and research skills to support administrative excellence, events, and community programs. As a final-year English Language major at International University (VNU-HCM) and Literature student at University of Social Sciences and Humanities, I excel in translation (VI-EN/EN-VI), IELTS preparation, comparative linguistics, and fact-checked research. Driven by a spirit of service and innovation, I connect Vietnamese traditions with international audiences.[file:1]</p>
+    </section>
+
+    <section id="expertise">
+        <h2>Core Expertise</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h3>Vietnamese Language & Cultural Consultant</h3>
+                <p>Curate cultural analyses, folklore translations, and professional etiquette training. Ensure culturally sensitive communication for NGOs, businesses, and academics in Vietnam.[file:1]</p>
+            </div>
+            <div class="expertise-card">
+                <h3>IELTS & Academic English Mentor</h3>
+                <p>Deliver IELTS workshops, academic writing editing, and English proficiency training for researchers and professionals. Tailored assessments for workplace and study abroad success. IELTS 8.0.[file:1]</p>
+            </div>
+            <div class="expertise-card">
+                <h3>Advanced Literature & Research Specialist</h3>
+                <p>Conduct research on Vietnamese literary trends, post-colonial studies, and folklore influences. Publish in journals and create educational resources with literary analysis.[file:1]</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Key Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Bilingual Academic Journal for Vietnamese Studies</h3>
+                <div class="project-role">Intersects all roles:</div>
+                <p>Launch open-access journal on Vietnamese literature/culture. Translate articles, host English writing workshops, and publish original post-colonial research.</p>
+            </div>
+            <div class="project-card">
+                <h3>Cultural Competency Training</h3>
+                <div class="project-role">Intersects all roles:</div>
+                <p>Training for international orgs on Vietnamese customs and communication. Include IELTS-style modules and literary case studies on cross-cultural challenges.</p>
+            </div>
+            <div class="project-card">
+                <h3>Vietnamese Literature Anthology in English</h3>
+                <div class="project-role">Intersects all roles:</div>
+                <p>Compile translated anthology with annotations. Use for advanced English teaching and contextual essays on Vietnamese literary history.</p>
+            </div>
+            <div class="project-card">
+                <h3>Online Platform for Collaboration</h3>
+                <div class="project-role">Intersects all roles:</div>
+                <p>Digital hub for research/language exchange. Moderate cultural discussions, host IELTS sessions, and lead comparative studies.</p>
+            </div>
+            <div class="project-card">
+                <h3>Research: Vietnamese Folklore in Modern Literature</h3>
+                <div class="project-role">Intersects all roles:</div>
+                <p>Analyze folklore influences with interviews. Create lesson plans for English learners and publish scholarly/public summaries.</p>
+            </div>
+            <div class="project-card">
+                <h3>Podcast: Vietnamese Voices in English</h3>
+                <div class="project-role">Intersects all roles:</div>
+                <p>Interviews on cultural identity and diaspora. Include academic English tips and explorations of post-colonial themes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience & Education</h2>
+        <div class="experience-list">
+            <div class="experience-item">
+                <h4>Teaching & Translation (2020–Present)</h4>
+                <p>English/Literature for high school/IELTS students; Vietnamese for foreigners; Conference editing. Comparative linguistics & fact-checking.[file:1]</p>
+            </div>
+            <div class="experience-item">
+                <h4>English Language Major (2021–2025)</h4>
+                <p>International University, VNU-HCM (Final Year). Literature, University of Social Sciences & Humanities HCM.[file:1]</p>
+            </div>
+            <div class="experience-item">
+                <h4>Research Publications</h4>
+                <p>Demian analysis; Judith Butler in Vietnamese diary; "Voice of Feelings in Modern VN Lit" (SCSSH 2025).[file:1]</p>
+            </div>
+            <div class="experience-item">
+                <h4>Skills</h4>
+                <ul class="skills-list">
+                    <li>IELTS 8.0, MOS Word/Excel</li>
+                    <li>Editing/Proofreading, Canva/CapCut</li>
+                    <li>Research, Multilingual Fluency</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Ready to collaborate on cultural, linguistic, or literary projects?</p>
+        <p>📧 <a href="mailto:lehoanganh04112003@gmail.com">lehoanganh04112003@gmail.com</a> | 📱 +84 773 121 811</p>
+        <p>53 Trần Não, An Khánh, Thủ Đức, Ho Chi Minh City, Vietnam[file:1]</p>
+    </section>
+</body>
+</html>
